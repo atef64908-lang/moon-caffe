@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Moon Cafe</title>
+<link rel="stylesheet" href="contact.css">
+<style>
+    body{
+font-family:Arial;
+margin:0;
+padding:0;
+background:#f6f1eb;
+}
+
+/* Navbar */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#3e2723;
+}
+
+nav h2{
+color:white;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* Contact */
+.contact{
+text-align:center;
+padding:60px;
+}
+
+.contact h1{
+font-size:40px;
+color:#3e2723;
+}
+
+.contact p{
+color:#555;
+margin-bottom:30px;
+}
+
+.contact-container{
+display:flex;
+justify-content:center;
+gap:50px;
+flex-wrap:wrap;
+}
+
+/* Form */
+form{
+background:white;
+padding:30px;
+width:320px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+form input,
+form textarea{
+width:100%;
+margin-bottom:15px;
+padding:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+form textarea{
+height:100px;
+resize:none;
+}
+
+form button{
+width:100%;
+padding:12px;
+background:#8B4513;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+form button:hover{
+background:#a0522d;
+}
+
+/* Info */
+.info{
+background:white;
+padding:30px;
+width:300px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:left;
+}
+
+.info h2{
+color:#3e2723;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <h2 class="logo">Moon Cafe</h2>
+
+    <ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="offers.html">Offers</a></li>
+
+<li><a href="cart.html">Cart 🛒</a></li>
+</ul>
+</nav>
+
+<!-- Contact Section -->
+<section class="contact">
+
+<h1>Contact Us ☕</h1>
+<p>We are always here to help you. Send us a message!</p>
+
+<div class="contact-container">
+
+<!-- Form -->
+<form onsubmit="sendMessage(event)">
+
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<!-- Info -->
+<div class="info">
+<h2>Moon Cafe</h2>
+<p>📍 Cairo, Egypt</p>
+<p>📞 +20 100 000 0000</p>
+<p>⏰ Open: 9 AM - 12 AM</p>
+<p>☕ Best coffee & desserts in town</p>
+</div>
+
+</div>
+
+</section>
+
+<script>
+function sendMessage(e){
+e.preventDefault();
+alert("Message sent successfully ☕✨");
+}
+</script>
+
+</body>
+</html>

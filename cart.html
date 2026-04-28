@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | Moon Cafe</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f6f1eb;
+text-align:center;
+padding:30px;
+}
+
+h1{
+color:#3e2723;
+margin-bottom:20px;
+}
+
+/* CART BOX */
+#cart-box{
+display:flex;
+flex-direction:column;
+gap:15px;
+align-items:center;
+}
+
+/* ITEM */
+.item{
+display:flex;
+align-items:center;
+gap:15px;
+background:white;
+padding:15px;
+width:420px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.item img{
+width:60px;
+height:60px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* INFO */
+.info{
+text-align:left;
+flex:1;
+}
+
+.info h3{
+margin:0;
+font-size:18px;
+}
+
+.info p{
+margin:5px 0 0;
+color:#555;
+}
+
+/* CONTROLS */
+.controls{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.controls button{
+background:#8B4513;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.controls button:hover{
+background:#a0522d;
+}
+
+/* DELETE */
+.delete{
+background:red;
+padding:6px 10px;
+border-radius:10px;
+cursor:pointer;
+border:none;
+color:white;
+}
+
+.delete:hover{
+background:darkred;
+}
+
+/* TOTAL */
+#total{
+margin-top:20px;
+color:#3e2723;
+font-size:22px;
+}
+
+/* CHECKOUT */
+.checkout-btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#3e2723;
+color:white;
+text-decoration:none;
+border-radius:25px;
+}
+
+.checkout-btn:hover{
+background:#5a3a30;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Your Cart 🛒</h1>
+
+<div id="cart-box"></div>
+
+<h2 id="total"></h2>
+
+<!-- زرار التعديل -->
+<a href="#" class="checkout-btn" onclick="goCheckout(event)">
+Proceed to Checkout
+</a>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* SAVE */
+function save(){
+localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* ADD (من الهوم والمنيو) */
+function addToCart(name, price, image){
+
+let found = cart.find(item => item.name === name);
+
+if(found){
+found.qty += 1;
+}else{
+cart.push({
+name:name,
+price:price,
+image:image,
+qty:1
+});
+}
+
+save();
+renderCart();
+
+}
+
+/* RENDER */
+function renderCart(){
+
+let box = document.getElementById("cart-box");
+box.innerHTML = "";
+
+if(cart.length === 0){
+box.innerHTML = "<p>Cart is empty 😢</p>";
+document.getElementById("total").innerText = "";
+return;
+}
+
+cart.forEach((item, index)=>{
+
+box.innerHTML += `
+<div class="item">
+
+<img src="${item.image}">
+
+<div class="info">
+<h3>${item.name}</h3>
+<p>${item.price} EGP</p>
+</div>
+
+<div class="controls">
+<button onclick="minus(${index})">-</button>
+<span>${item.qty}</span>
+<button onclick="plus(${index})">+</button>
+</div>
+
+<button class="delete" onclick="removeItem(${index})">X</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("total").innerText =
+"Total: " + getTotal() + " EGP";
+
+}
+
+/* PLUS */
+function plus(i){
+cart[i].qty++;
+save();
+renderCart();
+}
+
+/* MINUS */
+function minus(i){
+if(cart[i].qty > 1){
+cart[i].qty--;
+}else{
+cart.splice(i,1);
+}
+save();
+renderCart();
+}
+
+/* DELETE */
+function removeItem(i){
+cart.splice(i,1);
+save();
+renderCart();
+}
+
+/* TOTAL */
+function getTotal(){
+let total = 0;
+
+cart.forEach(item=>{
+total += item.price * item.qty;
+});
+
+return total;
+}
+
+/* CHECKOUT LOGIC */
+function goCheckout(e){
+e.preventDefault();
+
+if(cart.length === 0){
+alert("Cart is empty 🛒\nPlease add items first");
+window.location.href = "menu.html";
+}else{
+window.location.href = "checkout.html";
+}
+
+}
+
+/* INIT */
+renderCart();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offers | Moon Cafe</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f6f1eb;
+}
+
+/* NAV */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#3e2723;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+color:white;
+font-size:28px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* TITLE */
+h1{
+text-align:center;
+margin:30px 0;
+color:#3e2723;
+font-size:40px;
+}
+
+/* CARDS */
+.container{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+padding:20px;
+}
+
+.card{
+background:white;
+width:260px;
+border-radius:15px;
+padding:15px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+transition:0.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* DISCOUNT TAG */
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:red;
+color:white;
+padding:5px 10px;
+border-radius:10px;
+font-size:14px;
+}
+
+/* IMAGE */
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* TEXT */
+.card h3{
+margin:10px 0;
+font-size:22px;
+}
+
+.price{
+font-size:18px;
+margin-bottom:10px;
+color:#555;
+}
+
+/* BUTTON */
+button{
+padding:10px 20px;
+background:#8B4513;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+button:hover{
+background:#a0522d;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<h2 class="logo">Moon Cafe</h2>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="cart.html">Cart 🛒</a></li>
+</ul>
+</nav>
+
+<h1>🔥 Special Offers</h1>
+
+<div class="container">
+
+<!-- ITEM 1 -->
+<div class="card">
+<div class="badge">50% OFF</div>
+<img src="images/latte.jpg">
+<h3>Latte</h3>
+<p class="price"><del>80</del> 40 EGP</p>
+<button onclick="addToCart('Latte',40,'images/latte.jpg')">Add To Cart</button>
+</div>
+
+<!-- ITEM 2 -->
+<div class="card">
+<div class="badge">50% OFF</div>
+<img src="images/cappuccino.jpg">
+<h3>Cappuccino</h3>
+<p class="price"><del>90</del> 45 EGP</p>
+<button onclick="addToCart('Cappuccino',45,'images/cappuccino.jpg')">Add To Cart</button>
+</div>
+
+<!-- ITEM 3 -->
+<div class="card">
+<div class="badge">50% OFF</div>
+<img src="images/mocha.jpg">
+<h3>Mocha</h3>
+<p class="price"><del>70</del> 35 EGP</p>
+<button onclick="addToCart('Mocha',35,'images/mocha.jpg')">Add To Cart</button>
+</div>
+
+<!-- ITEM 4 -->
+<div class="card">
+<div class="badge">50% OFF</div>
+<img src="images/cheesecake.jpg">
+<h3>Cheesecake</h3>
+<p class="price"><del>100</del> 50 EGP</p>
+<button onclick="addToCart('Cheesecake',50,'images/cheesecake.jpg')">Add To Cart</button>
+</div>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* ADD TO CART */
+function addToCart(name, price, image){
+
+let found = cart.find(item => item.name === name);
+
+if(found){
+found.qty += 1;
+}else{
+cart.push({
+name:name,
+price:price,
+image:image,
+qty:1
+});
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+alert(name + " added to cart 🛒");
+
+}
+
+</script>
+
+</body>
+</html>

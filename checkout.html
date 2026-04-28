@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Moon Cafe</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f6f1eb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:30px;
+width:380px;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+h1{
+color:#3e2723;
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:10px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+background:#8B4513;
+color:white;
+border-radius:20px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#a0522d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Checkout ☕</h1>
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="tel" id="phone" placeholder="Phone Number">
+<input type="text" id="address" placeholder="Address">
+
+<button onclick="confirmOrder()">Confirm Order 🚚</button>
+
+</div>
+
+<script>
+
+// تأكيد الطلب
+function confirmOrder(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let address = document.getElementById("address").value;
+
+// إجبار إدخال البيانات
+if(name === "" || phone === "" || address === ""){
+alert("Please fill all fields ❗");
+return;
+}
+
+// حفظ الطلب
+let order = {
+name:name,
+phone:phone,
+address:address,
+cart:JSON.parse(localStorage.getItem("cart")) || []
+};
+
+localStorage.setItem("order", JSON.stringify(order));
+
+// تفريغ الكارت
+localStorage.removeItem("cart");
+
+// رسالة تأكيد
+alert("تم تأكيد الطلب 🚚\nسيتم التوصيل خلال 45 دقيقة");
+
+// تحويل للفاتورة
+window.location.href = "invoice.html";
+
+}
+
+</script>
+
+</body>
+</html>

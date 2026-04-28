@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice | Moon Cafe</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f6f1eb;
+display:flex;
+justify-content:center;
+padding:30px;
+}
+
+.invoice{
+background:white;
+width:500px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+color:#3e2723;
+margin-bottom:20px;
+}
+
+.info{
+margin-bottom:15px;
+line-height:1.6;
+}
+
+hr{
+margin:15px 0;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+}
+
+.total{
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+color:#3e2723;
+}
+
+.btns{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#8B4513;
+color:white;
+}
+
+button:hover{
+background:#a0522d;
+}
+
+.print{
+background:#3e2723;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="invoice">
+
+<h1>Moon Cafe Invoice ☕</h1>
+
+<div class="info" id="customer"></div>
+
+<hr>
+
+<div id="items"></div>
+
+<hr>
+
+<div class="total" id="total"></div>
+
+<div class="btns">
+<button class="print" onclick="window.print()">Print Invoice 🖨</button>
+<button onclick="goHome()">Back Home 🏠</button>
+</div>
+
+</div>
+
+<script>
+
+let order = JSON.parse(localStorage.getItem("order"));
+let cart = order?.cart || [];
+
+let delivery = 25;
+
+/* CUSTOMER INFO */
+document.getElementById("customer").innerHTML = `
+<strong>Name:</strong> ${order.name}<br>
+<strong>Phone:</strong> ${order.phone}<br>
+<strong>Address:</strong> ${order.address}
+`;
+
+/* ITEMS */
+let itemsBox = document.getElementById("items");
+
+let subtotal = 0;
+
+cart.forEach(item => {
+
+let totalItem = item.price * item.qty;
+subtotal += totalItem;
+
+itemsBox.innerHTML += `
+<div class="item">
+<span>${item.name} × ${item.qty}</span>
+<span>${totalItem} EGP</span>
+</div>
+`;
+
+});
+
+/* TOTAL */
+let finalTotal = subtotal + delivery;
+
+document.getElementById("total").innerHTML = `
+Subtotal: ${subtotal} EGP <br>
+Delivery: ${delivery} EGP <br><br>
+Total: ${finalTotal} EGP
+`;
+
+/* HOME */
+function goHome(){
+window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

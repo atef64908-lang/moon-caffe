@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Moon Cafe</title>
+
+<style>
+
+/* خلفية الصورة */
+body{
+margin:0;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("images/bg.jpg") center/cover no-repeat;
+position:relative;
+}
+
+/* طبقة شفافة فوق الصورة */
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+top:0;
+left:0;
+z-index:0;
+}
+
+.box{
+background:white;
+padding:25px;
+width:320px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+text-align:center;
+position:relative;
+z-index:1;
+}
+
+h2{
+color:#3e2723;
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:6px 0;
+border:1px solid #ccc;
+border-radius:8px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+background:#8B4513;
+color:white;
+}
+
+button:hover{
+background:#a0522d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Moon Cafe ☕</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="phone" placeholder="Phone (11 digits)">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<script>
+
+function login(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+/* validation */
+if(name==""||phone==""||email==""||password==""){
+alert("Please fill all fields ❗");
+return;
+}
+
+if(!/^\d{11}$/.test(phone)){
+alert("Phone must be exactly 11 digits ❗");
+return;
+}
+
+if(!email.includes("@")){
+alert("Invalid Email ❗");
+return;
+}
+
+if(password.length < 4){
+alert("Password too short ❗");
+return;
+}
+
+/* حفظ الاسم للـ index */
+localStorage.setItem("name", name);
+
+/* نجاح */
+alert("Login Successful ☕ Welcome " + name);
+
+/* تحويل للصفحة الرئيسية */
+window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Cafe | Menu</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f6f1eb;
+}
+
+/* NAVBAR */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#3e2723;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+color:white;
+font-size:28px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* MENU */
+.menu{
+padding:50px;
+}
+
+/* SECTION */
+.section{
+margin-bottom:70px;
+}
+
+.section h2{
+font-size:40px;
+margin-bottom:20px;
+color:#3e2723;
+}
+
+/* SCROLL */
+.scroll{
+display:flex;
+gap:25px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
+}
+
+.scroll::-webkit-scrollbar{
+display:none;
+}
+
+/* CARD */
+.card{
+min-width:320px;
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+scroll-snap-align:start;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:10px;
+}
+
+.card h3{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:18px;
+margin-bottom:10px;
+color:#555;
+}
+
+/* BUTTON */
+.card button{
+padding:10px 22px;
+border:none;
+background:#8B4513;
+color:white;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card button:hover{
+background:#a0522d;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<h2 class="logo">Moon Cafe</h2>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+
+<li><a href="offers.html">Offers</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="cart.html">Cart 🛒</a></li>
+</ul>
+</nav>
+
+<section class="menu">
+
+<!-- ☕ HOT DRINKS -->
+<div class="section">
+<h2>Hot Drinks ☕</h2>
+
+<div class="scroll">
+
+<div class="card">
+<img src="images/latte.jpg">
+<h3>Latte</h3>
+<p>60 EGP</p>
+<button onclick="addToCart('Latte',60,'images/latte.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/cappuccino.jpg">
+<h3>Cappuccino</h3>
+<p>65 EGP</p>
+<button onclick="addToCart('Cappuccino',65,'images/cappuccino.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/espresso.jpg">
+<h3>Espresso</h3>
+<p>55 EGP</p>
+<button onclick="addToCart('Espresso',55,'images/espresso.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/mocha.jpg">
+<h3>Mocha</h3>
+<p>70 EGP</p>
+<button onclick="addToCart('Mocha',70,'images/mocha.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/americano.jpg">
+<h3>Americano</h3>
+<p>50 EGP</p>
+<button onclick="addToCart('Americano',50,'images/americano.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/turkish.jpg">
+<h3>Turkish Coffee</h3>
+<p>45 EGP</p>
+<button onclick="addToCart('Turkish Coffee',45,'images/turkish.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/flatwhite.jpg">
+<h3>Flat White</h3>
+<p>75 EGP</p>
+<button onclick="addToCart('Flat White',75,'images/flatwhite.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/macchiato.jpg">
+<h3>Macchiato</h3>
+<p>68 EGP</p>
+<button onclick="addToCart('Macchiato',68,'images/macchiato.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/hotchoco.jpg">
+<h3>Hot Chocolate</h3>
+<p>70 EGP</p>
+<button onclick="addToCart('Hot Chocolate',70,'images/hotchoco.jpg')">Add</button>
+</div>
+
+</div>
+</div>
+
+<!-- 🧊 COLD DRINKS -->
+<div class="section">
+<h2>Cold Drinks 🧊</h2>
+
+<div class="scroll">
+
+<div class="card">
+<img src="images/icedcoffee.jpg">
+<h3>Iced Coffee</h3>
+<p>65 EGP</p>
+<button onclick="addToCart('Iced Coffee',65,'images/icedcoffee.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/frappe.jpg">
+<h3>Frappe</h3>
+<p>75 EGP</p>
+<button onclick="addToCart('Frappe',75,'images/frappe.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/milkshake.jpg">
+<h3>Milkshake</h3>
+<p>80 EGP</p>
+<button onclick="addToCart('Milkshake',80,'images/milkshake.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/mojito.jpg">
+<h3>Mojito</h3>
+<p>70 EGP</p>
+<button onclick="addToCart('Mojito',70,'images/mojito.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/icedlatte.jpg">
+<h3>Iced Latte</h3>
+<p>68 EGP</p>
+<button onclick="addToCart('Iced Latte',68,'images/icedlatte.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/icedmocha.jpg">
+<h3>Iced Mocha</h3>
+<p>72 EGP</p>
+<button onclick="addToCart('Iced Mocha',72,'images/icedmocha.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/lemonmint.jpg">
+<h3>Lemon Mint</h3>
+<p>55 EGP</p>
+<button onclick="addToCart('Lemon Mint',55,'images/lemonmint.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/icetea.jpg">
+<h3>Iced Tea</h3>
+<p>60 EGP</p>
+<button onclick="addToCart('Iced Tea',60,'images/icetea.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/bluelagoon.jpg">
+<h3>Blue Lagoon</h3>
+<p>85 EGP</p>
+<button onclick="addToCart('Blue Lagoon',85,'images/bluelagoon.jpg')">Add</button>
+</div>
+
+</div>
+</div>
+
+<!-- 🍰 DESSERTS -->
+<div class="section">
+<h2>Desserts 🍰</h2>
+
+<div class="scroll">
+
+<div class="card">
+<img src="images/cheesecake.jpg">
+<h3>Cheesecake</h3>
+<p>85 EGP</p>
+<button onclick="addToCart('Cheesecake',85,'images/cheesecake.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/brownie.jpg">
+<h3>Brownie</h3>
+<p>75 EGP</p>
+<button onclick="addToCart('Brownie',75,'images/brownie.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/donut.jpg">
+<h3>Donut</h3>
+<p>50 EGP</p>
+<button onclick="addToCart('Donut',50,'images/donut.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/croissant.jpg">
+<h3>Croissant</h3>
+<p>60 EGP</p>
+<button onclick="addToCart('Croissant',60,'images/croissant.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/waffle.jpg">
+<h3>Waffle</h3>
+<p>70 EGP</p>
+<button onclick="addToCart('Waffle',70,'images/waffle.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/molten.jpg">
+<h3>Molten Cake</h3>
+<p>90 EGP</p>
+<button onclick="addToCart('Molten Cake',90,'images/molten.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/icecream.jpg">
+<h3>Ice Cream</h3>
+<p>65 EGP</p>
+<button onclick="addToCart('Ice Cream',65,'images/icecream.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/macarons.jpg">
+<h3>Macarons</h3>
+<p>80 EGP</p>
+<button onclick="addToCart('Macarons',80,'images/macarons.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/pancakes.jpg">
+<h3>Pancakes</h3>
+<p>75 EGP</p>
+<button onclick="addToCart('Pancakes',75,'images/pancakes.jpg')">Add</button>
+</div>
+
+</div>
+</div>
+
+<!-- 🥤 4 SOFT DRINKS (المفقود) -->
+<div class="section">
+<h2>Soft Drinks 🥤</h2>
+
+<div class="scroll">
+
+<div class="card">
+<img src="images/water.jpg">
+<h3>Water</h3>
+<p>10 EGP</p>
+<button onclick="addToCart('Water',10,'images/water.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/cocacola.jpg">
+<h3>Coca Cola</h3>
+<p>25 EGP</p>
+<button onclick="addToCart('Coca Cola',25,'images/cocacola.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/pepsi.jpg">
+<h3>Pepsi</h3>
+<p>25 EGP</p>
+<button onclick="addToCart('Pepsi',25,'images/pepsi.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/sprite.jpg">
+<h3>Sprite</h3>
+<p>25 EGP</p>
+<button onclick="addToCart('Sprite',25,'images/sprite.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/fanta.jpg">
+<h3>Fanta</h3>
+<p>25 EGP</p>
+<button onclick="addToCart('fanta',25,'images/fanta.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/7up.jpg">
+<h3>7UP</h3>
+<p>25 EGP</p>
+<button onclick="addToCart('7up',25,'images/7up.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/sparkling.jpg">
+<h3>Sparkling Water</h3>
+<p>30 EGP</p>
+<button onclick="addToCart('sparkling',30,'images/sparkling.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/energy.jpg">
+<h3>Energy Drink</h3>
+<p>45 EGP</p>
+<button onclick="addToCart('energy',45,'images/energy.jpg')">Add</button>
+</div>
+
+<div class="card">
+<img src="images/juice.jpg">
+<h3>juice</h3>
+<p>50 EGP</p>
+<button onclick="addToCart('juice',50,'images/juice.jpg')">Add</button>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<!-- JS -->
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price, image){
+
+let found = cart.find(item => item.name === name);
+
+if(found){
+found.qty += 1;
+}else{
+cart.push({
+name:name,
+price:price,
+image:image,
+qty:1
+});
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+alert(name + " added to cart 🛒");
+}
+</script>
+
+</body>
+</html>
